@@ -1,0 +1,35 @@
+
+<div class="row animated fadeInRightBig weather-page vcenter">
+	<div class="col-md-6 col-md-offset-3">
+		<div class="row">
+		
+			<p class="city-name">{{ weatherForecastResult.city.name + ', ' }}{{ weatherForecastResult.city.country }} <span class="weatherForecastResult-local-time"> {{ currentWeatherResult.dt | date : 'shortTime' }}</span></p>
+			<div class="weather-container">
+				<div class="col-md-6">
+					<p class="current-temp">{{ roundTemp(currentWeatherResult.main.temp) }}&#176;</p>
+				</div>
+
+				<div class="col-md-6">
+					<ul class="weather-details-list">
+						<li class="weather-details">{{ currentWeatherResult.weather[0].description }}</li>
+						<li>Wind Speeds of {{ currentWeatherResult.wind.speed }} mph</li>
+						<li class="weather-details">{{ currentWeatherResult.main.humidity }}% Humidity</li>
+					</ul>
+				</div>
+			</div>
+					
+		</div>
+		
+		<ul class="forecast-list">
+			<li class="forecast-list-days" ng-repeat="day in weatherForecastResult.list">
+				<span>{{ roundTemp(day.temp.day) }}&#176;</span>
+				<span>{{ convertToDate(day.dt) | date : 'MMM d' }}</span>
+			</li>
+		</ul>
+		
+	</div>
+</div>
+
+
+
+
